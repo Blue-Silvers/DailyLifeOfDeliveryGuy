@@ -77,10 +77,6 @@ public class ColiderExplosion : MonoBehaviour
             }
             Instantiate(explosionParticle, gameObject.transform.position, gameObject.transform.rotation);
             shaking.Shaker(0.3f, 0.5f);
-            if (showScript == true && isAnEnemy == true)
-            {
-                pickUpBox.ActualisateNbOfBob();
-            }
             Destroy(gameObject);
         }
 

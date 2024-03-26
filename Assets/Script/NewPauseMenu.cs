@@ -55,7 +55,7 @@ public class NewPauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Resume();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMenu()

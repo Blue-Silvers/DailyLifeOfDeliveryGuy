@@ -6,28 +6,11 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     Vector3 originalPos;
-    private Vector2 turn;
-    [SerializeField] float sensitivity = .5f;
-    [SerializeField] GameObject player;
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         originalPos = transform.localPosition;
     }
-    void Update()
-    {
-        if (Time.timeScale == 1)
-        {
-            turn.x += Input.GetAxis("Mouse X") * sensitivity;
-            turn.y += Input.GetAxis("Mouse Y") * sensitivity;
-            player.transform.localRotation = Quaternion.Euler(0, turn.x, 0);
-            transform.localRotation = Quaternion.Euler(-turn.y, 0, 0);
-        }
-    }
-
-
-
     public IEnumerator Shake (float duration, float magnitude)
     {
         
@@ -41,7 +24,7 @@ public class CameraShake : MonoBehaviour
                 float x = Random.Range(-1f, 1f) * magnitude;
                 float y = Random.Range(-1f, 1f) * magnitude;
 
-                transform.localPosition = new Vector3(x, y, originalPos.z);
+                transform.localPosition = new Vector3(x, originalPos.y, y);
 
 
                 elapsed += Time.deltaTime;

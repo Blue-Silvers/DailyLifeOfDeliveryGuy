@@ -16,14 +16,33 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private GameObject ngButton, settingsButton;
 
-    [Header("Input Manager (don't touch)")]
-    [SerializeField] private InputActionReference escapeM;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             CloseSettingsButton();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (WindowOpen == true)
+            {
+                settingsWindow.SetActive(false);
+                eventSystem.SetSelectedGameObject(ngButton);
+                WindowOpen = false;
+            }
+            else
+            {
+                if (gameIsPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Paused();
+                }
+            }
         }
     }
     void Paused()
@@ -74,28 +93,4 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private void OnEnable()
-    {
-        escapeM.action.started += EscapeM;
-    }
-    private void EscapeM(InputAction.CallbackContext obj)
-    {
-        if (WindowOpen == true)
-        {
-            settingsWindow.SetActive(false);
-            eventSystem.SetSelectedGameObject(ngButton);
-            WindowOpen = false;
-        }
-        else
-        {
-            if (gameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Paused();
-            }
-        }
-    }
 }
