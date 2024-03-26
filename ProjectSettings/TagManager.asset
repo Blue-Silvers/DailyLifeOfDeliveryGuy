@@ -10,6 +10,7 @@ TagManager:
   - FxTemporaire
   - Bob
   - BobBullet
+  - Road
   layers:
   - Default
   - TransparentFX
