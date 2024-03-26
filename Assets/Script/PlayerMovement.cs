@@ -24,36 +24,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _backstabStrength = 8f;
 
     [SerializeField] Camera cam;
-    [SerializeField] CameraShake shaking;
-    [SerializeField] Vector2 cameraShakeValue;
     [SerializeField] int fovValue;
     int aiming = 0;
 
-
-    [SerializeField] float maxLife;
-    [SerializeField] int maxAmmo, actualAmmo;
-    [SerializeField] HealthBar ammoBar;
-
-    [SerializeField] GameObject bulletPrefab/*, explosionParticle*/;
-    [SerializeField] float bulletSpeed = 50;
-    bool shoot;
-    [SerializeField] private Transform rocketSpawnPoint;
-    [SerializeField] private bool upgrade1 = false;
-    [SerializeField] private float damageUp1;
-    [SerializeField] private bool upgrade2 = false;
-    [SerializeField] private float damageUp2;
-    [SerializeField] private bool upgrade3 = false;
-    [SerializeField] private float damageUp3;
-
+    [SerializeField] GameObject car;
 
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
-        ammoBar.SetMaxHealth(maxAmmo);
-        actualAmmo = maxAmmo;
-        shoot = true;
     }
 
     private void Update()
@@ -71,26 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if(actualAmmo > 0 && shoot == true)
-                {
-                    shoot = false;
-                    animator.SetTrigger("Shoot");
-                    actualAmmo -= 1;
-                    ammoBar.SetHealth(actualAmmo);
-                    var bullet = Instantiate(bulletPrefab, rocketSpawnPoint.position, rocketSpawnPoint.rotation);
-                    bullet.GetComponent<Rigidbody>().velocity = rocketSpawnPoint.forward * bulletSpeed;
-                    rigidbody.AddForce(cam.transform.forward * - _backstabStrength, ForceMode.Impulse);
-                    shaking.Shaker(cameraShakeValue.x, cameraShakeValue.y);
-                    if(actualAmmo > 0)
-                    {
-                        animator.SetBool("Ammo", true);
-                    }
-                    else
-                    {
-                        animator.SetBool("Ammo", false);
-                        shoot = true;
-                    }
-                }
+                Instantiate(car, gameObject.transform.position, gameObject.transform.rotation);
+                Destroy(gameObject);
             }
 
 
@@ -171,36 +133,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Reload(int reloading)
-    {
-        actualAmmo += reloading;
 
-        if (actualAmmo > maxAmmo)
-        {
-            actualAmmo = maxAmmo;
-        }
-
-        ammoBar.SetHealth(actualAmmo);
-    }
-
-    public void CanShoot()
-    {
-        shoot = true;
-    }
-
-    public void Upgrade()
-    {
-        if (upgrade2 == true)
-        {
-            upgrade3 = true;
-        }
-        else if (upgrade1 == true)
-        {
-            upgrade2 = true;
-        }
-        else if (upgrade1 != true)
-        {
-            upgrade1 = true;
-        }
-    }
 }
