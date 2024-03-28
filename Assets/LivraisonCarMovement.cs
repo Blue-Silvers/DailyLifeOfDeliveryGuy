@@ -36,7 +36,7 @@ public class LivraisonCarMovement : MonoBehaviour
             isRunning = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.deltaTime != 0)
         {
             Instantiate(player, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);

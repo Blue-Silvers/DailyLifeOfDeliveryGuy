@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7937949278032084717}
   - component: {fileID: 389132071250631158}
   - component: {fileID: 4820276197542546053}
-  - component: {fileID: 3650843450235277512}
   - component: {fileID: 2411398339325902202}
   m_Layer: 0
   m_Name: Player 1
@@ -162,28 +161,6 @@ MonoBehaviour:
   cam: {fileID: 2064859632929753808}
   fovValue: 75
   car: {fileID: 6823345047807810595, guid: 3089ff5faa3bf734eaa632767462529b, type: 3}
---- !u!114 &3650843450235277512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4464682616726224408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00a2c4a00adfe594296294359e9c7ecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 5
-  upgradePrice: 10
-  healPrice: 2
-  ammoPrice: 1
-  MoneyTxt: {fileID: 0}
-  Shop: {fileID: 0}
-  deathScreen: {fileID: 0}
-  nbUpgradeTxt: {fileID: 0}
-  upgradeButton: {fileID: 0}
-  interactButton: {fileID: 0}
 --- !u!95 &2411398339325902202
 Animator:
   serializedVersion: 5

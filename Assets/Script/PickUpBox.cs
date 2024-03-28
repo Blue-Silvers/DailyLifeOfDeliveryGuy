@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PickUpBox : MonoBehaviour
 {
-    private Animator animator;
     
     [SerializeField] int money;
     [SerializeField] int upgradePrice;
@@ -26,7 +25,6 @@ public class PickUpBox : MonoBehaviour
     {
         money = 0;
         MoneyTxt.text = money.ToString();
-        animator = GetComponent<Animator>();
 
     }
 
