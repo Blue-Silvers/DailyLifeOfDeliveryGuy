@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     int aiming = 0;
 
     [SerializeField] GameObject car;
+    bool onRoad = false;
 
 
     private void Start()
@@ -51,8 +52,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Instantiate(car, gameObject.transform.position, gameObject.transform.rotation);
-                Destroy(gameObject);
+                if (onRoad)
+                {
+                    Instantiate(car, gameObject.transform.position, gameObject.transform.rotation);
+                    Destroy(gameObject);
+                }
+
             }
 
 
@@ -124,14 +129,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-
+        if(collision.gameObject.tag == "Road")
+        {
+            onRoad = true;
+        }
+        else
+        {
+            onRoad = false;
+        }
         if (collision.gameObject.layer == 3)
         {
             isGrounded = true;
         }
     }
-
 
 }

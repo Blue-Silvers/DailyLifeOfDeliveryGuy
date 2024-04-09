@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3715364360236182698}
   m_Layer: 3
   m_Name: Road Concrete Tile
-  m_TagString: Road
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

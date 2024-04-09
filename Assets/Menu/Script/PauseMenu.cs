@@ -23,8 +23,7 @@ public class PauseMenu : MonoBehaviour
         {
             CloseSettingsButton();
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (WindowOpen == true)
             {
@@ -36,6 +35,7 @@ public class PauseMenu : MonoBehaviour
             {
                 if (gameIsPaused)
                 {
+                    Cursor.lockState = CursorLockMode.Locked;
                     Resume();
                 }
                 else
@@ -48,6 +48,7 @@ public class PauseMenu : MonoBehaviour
     void Paused()
     {
         pauseMenuUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
         eventSystem.SetSelectedGameObject(ngButton);
         Time.timeScale = 0;
         gameIsPaused = true;
@@ -56,15 +57,15 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         gameIsPaused = false;
     }
 
     public void Restart()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1;
-        gameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Resume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -85,6 +86,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Resume();
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainMenu");
     }
 
