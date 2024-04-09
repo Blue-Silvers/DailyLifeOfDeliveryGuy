@@ -19070,6 +19070,14 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4317716648216999240, guid: dea3d5c101e638c40abaeb621c2e3a5a, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317716648216999240, guid: dea3d5c101e638c40abaeb621c2e3a5a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 432748653b0a7a84bbcc09e1882a7557, type: 3}
     - target: {fileID: 4841967064388757056, guid: dea3d5c101e638c40abaeb621c2e3a5a, type: 3}
       propertyPath: lifePoint1
       value: 
