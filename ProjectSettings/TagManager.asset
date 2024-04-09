@@ -11,6 +11,8 @@ TagManager:
   - Bob
   - BobBullet
   - Road
+  - house1
+  - house2
   layers:
   - Default
   - TransparentFX

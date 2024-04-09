@@ -23,7 +23,6 @@ public class TimeToExplose : MonoBehaviour
             {
                 thePlayer = gameObjectPlayer as GameObject;
             }
-
         }
     }
 

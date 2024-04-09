@@ -121,8 +121,4 @@ public class PickUpBox : MonoBehaviour
         }
     }
 
-    void Death()
-    {
-        deathScreen.SetActive(true);
-    }
 }
