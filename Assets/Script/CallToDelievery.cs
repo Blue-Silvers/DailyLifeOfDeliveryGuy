@@ -14,7 +14,7 @@ public class CallToDelievery : MonoBehaviour
     TextMeshPro theOrder1, theOrder2;
     string order1, order2;
 
-    [SerializeField] GameObject houseLocate1, houseLocate2;
+    [SerializeField] GameObject houseLocate1, houseBox1, houseLocate2, houseBox2;
 
     string[] shopNeedToGo = new string[] { "Fried Chicken", "Pizza", "Fast Food", "Coffee" };
     // Start is called before the first frame update
@@ -22,6 +22,8 @@ public class CallToDelievery : MonoBehaviour
     {
         houseLocate1.SetActive(false);
         houseLocate2.SetActive(false);
+        houseBox1.SetActive(false);
+        houseBox2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -45,6 +47,15 @@ public class CallToDelievery : MonoBehaviour
                 theOrder1.text = order1;
             }
             houseLocate1.SetActive(true);
+            houseBox1.SetActive(true );
+        }
+        else
+        {
+            theOrder1 = GameObject.Find("TextHouse1").GetComponent<TextMeshPro>();
+            if (theOrder1 != null)
+            {
+                theOrder1.text = "Nothing";
+            }
         }
         if (house2 == true)
         {
@@ -54,6 +65,15 @@ public class CallToDelievery : MonoBehaviour
                 theOrder2.text = order2;
             }
             houseLocate2.SetActive(true);
+            houseBox2.SetActive(true);
+        }
+        else
+        {
+            theOrder2 = GameObject.Find("TextHouse2").GetComponent<TextMeshPro>();
+                if (theOrder2 != null)
+                {
+                    theOrder2.text = "Nothing";
+                }
         }
     }
 

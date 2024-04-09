@@ -8,6 +8,7 @@ public class NewBehaviourScript : MonoBehaviour
     public TextMeshProUGUI textcomponent;
     public string[] lines;
     public float textSpeed;
+    [SerializeField] GameObject colliderBox, icone;
 
     private int index;
     // Start is called before the first frame update
@@ -55,6 +56,9 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else
         {
+            PickUpBox.instance.money += 50;
+            icone.SetActive(false);
+            colliderBox.SetActive(false);
             gameObject.SetActive(false);
         }
     }
