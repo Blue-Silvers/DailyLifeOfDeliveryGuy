@@ -5,120 +5,59 @@ using UnityEngine;
 
 public class PickUpBox : MonoBehaviour
 {
-    
-    [SerializeField] int money;
-    [SerializeField] int upgradePrice;
-    [SerializeField] int healPrice;
-    [SerializeField] int ammoPrice;
+    public int firstItemPricePUB;
+    public int secondItemPricePUB;
+    public int thirdItemPricePUB;
+    public int money;
     [SerializeField] TextMeshProUGUI MoneyTxt;
+    public static PickUpBox instance;
 
-    [SerializeField] GameObject Shop, deathScreen;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
-    bool gameIsPaused;
-    int nbUpgrade = 1;
-    [SerializeField] TextMeshProUGUI nbUpgradeTxt;
-    [SerializeField] GameObject upgradeButton, interactButton;
 
-
-    int RdEscape;
     private void Start()
     {
-        money = 0;
+        money = 20;
         MoneyTxt.text = money.ToString();
 
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            if (gameIsPaused)
-            {
-                Resume();
-            }
-        }
+        MoneyTxt.text = money.ToString();
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKey(KeyCode.E) && (other.gameObject.tag == "Ammo" || other.gameObject.tag == "Heal" || other.gameObject.tag == "Money"))
-        {
-
-                money += 10;
-                MoneyTxt.text = money.ToString();
-
-            Destroy(other.gameObject);
-            Invoke("DontShowInteract", 0.1f);
-        }
-        else if (Input.GetKey(KeyCode.E) && other.gameObject.tag == "Upgrade")
-        {
-
-            Time.timeScale = 0f;
-            Shop.SetActive(true);
-        }
-
-        if (other.gameObject.tag == "Ammo" || other.gameObject.tag == "Heal" || other.gameObject.tag == "Money" || other.gameObject.tag == "Upgrade")
-        {
-            interactButton.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Ammo" || other.gameObject.tag == "Heal" || other.gameObject.tag == "Money" || other.gameObject.tag == "Upgrade")
-        {
-            interactButton.SetActive(false);
-        }
-    }
-
-    void DontShowInteract()
-    {
-        interactButton.SetActive(false);
-    }
 
 
     //Shop
-    public void Resume()
-    {
-        Shop.SetActive(false);
-        Time.timeScale = 1.0f;
-        gameIsPaused = false;
-    }
 
-    public void BuyUpgrade()
+    public void BuyFirstItem()
     {
-        if (money >= upgradePrice)
+        if (money >= firstItemPricePUB)
         {
-            nbUpgrade += 1;
-            money -= upgradePrice;
-            MoneyTxt.text = money.ToString();
-
-            if (nbUpgrade > 3)
-            {
-                upgradeButton.SetActive(false);
-            }
-
-            nbUpgradeTxt.text = nbUpgrade.ToString();
+            money -= firstItemPricePUB;
         }
     }
-    public void BuyHeal()
+    public void BuySecondItem()
     {
-        if (money >= healPrice)
+        if (money >= secondItemPricePUB)
         {
-            money -= healPrice;
-            MoneyTxt.text = money.ToString();
-
+            money -= secondItemPricePUB;
         }
     }
-    public void BuyAmmo()
+    public void BuyThirdItem()
     {
-        if (money >= ammoPrice)
+        if (money >= thirdItemPricePUB)
         {
-            money -= ammoPrice;
-
-            MoneyTxt.text = money.ToString();
-
+            money -= thirdItemPricePUB;
         }
     }
+
 
 }
