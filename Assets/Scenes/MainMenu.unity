@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -851,6 +851,10 @@ PrefabInstance:
     - target: {fileID: 6273707831671722979, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6441309445678159201, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
+      propertyPath: FirstLevelToLoad
+      value: Uber City
       objectReference: {fileID: 0}
     - target: {fileID: 6570684516479608183, guid: ee17fbc793a4973468db4d0d249d882c, type: 3}
       propertyPath: m_Transition
