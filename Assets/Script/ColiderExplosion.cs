@@ -73,11 +73,11 @@ public class ColiderExplosion : MonoBehaviour
             {
                 Instantiate(explosionParticle, other.transform.position, other.transform.rotation);
                 shaking.Shaker(0.3f, 0.5f);
-                Destroy(other.gameObject);
+                
             }
             Instantiate(explosionParticle, gameObject.transform.position, gameObject.transform.rotation);
             shaking.Shaker(0.3f, 0.5f);
-            Destroy(gameObject);
+            
         }
 
     }
